@@ -4,26 +4,29 @@
  *main - print a num pair from 00-99 but no repeats (00 01, 00 02, 00 03,...)
  *Return: Always 0 (Success)
 **/
-int main() {
+
+int main(void)
+{
     int i, j;
 
-    for (i = 0; i < 99; i++) {
-        for (j = i; j < 99; j++) {
-            putchar((i / 10) + '0');
-            putchar((i % 10) + '0');
-            putchar(' ');
-            putchar((j / 10) + '0');
-            putchar((j % 10) + '0');
+    for (i = 0; i < 100; i++)
+    {
+        for (j = i; j < 100; j++)
+        {
+            if (i != 0 || j != 0)  // Exclude "00 00"
+            {
+                printf("%02d %02d", i, j);
 
-            if (i != 99 || j != 99) {
-                putchar(',');
-                putchar(' ');
+                if (!(i == 99 && j == 99))  // Exclude "99 99"
+                {
+                    putchar(',');
+                    putchar(' ');
+                }
             }
         }
     }
 
     putchar('\n');
 
-    return 0;
+    return (0);
 }
-
